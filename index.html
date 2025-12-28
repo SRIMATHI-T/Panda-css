@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Super Cute Panda Face</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #ffcce6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    
+    .panda-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 50px;
+    }
+
+    /* Subtle breathing animation */
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+    
+    .panda-face {
+      position: relative;
+      width: 240px;
+      height: 220px;
+      background-color: white;
+      border: 6px solid black;
+      border-radius: 50%;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      overflow: visible;
+      animation: breathe 5s ease-in-out infinite;
+      transition: transform 0.3s ease;
+    }
+
+    .ear {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      background-color: black;
+      border-radius: 50%;
+      border: 3px solid black;
+      z-index: -1;
+    }
+
+    .left-ear {
+      top: -25px;
+      left: -15px;
+      transform: rotate(-15deg);
+    }
+
+    .right-ear {
+      top: -25px;
+      right: -15px;
+      transform: rotate(15deg);
+    }
+
+    .eye-patch {
+      position: absolute;
+      width: 80px;
+      height: 70px;
+      background-color: black;
+      border-radius: 50%;
+    }
+
+    .left-eye-patch {
+      top: 40px;
+      left: 25px;
+      transform: rotate(10deg);
+    }
+
+    .right-eye-patch {
+      top: 40px;
+      right: 25px;
+      transform: rotate(-10deg);
+    }
+
+    .eye {
+      position: absolute;
+      width: 30px;
+      height: 40px;
+      background-color: black;
+      border-radius: 50%;
+      animation: blink 6s infinite;
+    }
+
+    @keyframes blink {
+      0%, 96%, 100% { height: 40px; }
+      98% { height: 5px; }
+    }
+
+    .eye::after {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background-color: white;
+      border-radius: 50%;
+      top: 8px;
+      left: 5px;
+    }
+
+    .left-eye {
+      top: 60px;
+      left: 50px;
+    }
+
+    .right-eye {
+      top: 60px;
+      right: 50px;
+    }
+
+    .nose {
+      position: absolute;
+      top: 120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 25px;
+      height: 20px;
+      background-color: black;
+      border-radius: 50%;
+      border: 2px solid black;
+    }
+
+    .mouth {
+      position: absolute;
+      top: 145px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 30px;
+    }
+
+    .mouth::before,
+    .mouth::after {
+      content: "";
+      position: absolute;
+      width: 25px;
+      height: 20px;
+      border: 3px solid black;
+      border-top: none;
+      border-left: none;
+      border-radius: 0 0 50% 50%;
+    }
+
+    .mouth::before {
+      left: 5px;
+      transform: rotate(45deg);
+    }
+
+    .mouth::after {
+      right: 5px;
+      transform: rotate(-45deg);
+    }
+
+    .cheek {
+      position: absolute;
+      width: 30px;
+      height: 20px;
+      background-color: #ff9999;
+      border-radius: 50%;
+      opacity: 0.6;
+    }
+
+    .left-cheek {
+      top: 110px;
+      left: 25px;
+    }
+
+    .right-cheek {
+      top: 110px;
+      right: 25px;
+    }
+    /* Additional animations and effects */
+    
+    .panda-container:hover .panda-face {
+      animation-play-state: paused;
+      transform: scale(1.05);
+    }
+    
+    .panda-container:active .panda-face {
+      animation-play-state: paused;
+      transform: scale(1.1);
+    }
+
+    /* Subtle bamboo sway animation */
+    @keyframes sway {
+      0%, 100% { transform: translateX(-50%) rotate(-1deg); }
+      50% { transform: translateX(-50%) rotate(1deg); }
+    }
+    
+    .bamboo {
+      position: absolute;
+      width: 15px;
+      height: 120px;
+      background-color: #7fba00;
+      border-radius: 8px;
+      bottom: -140px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: -1;
+      transform-origin: bottom center;
+      animation: sway 5s ease-in-out infinite;
+    }
+
+    .bamboo::before, .bamboo::after {
+      content: "";
+      position: absolute;
+      width: 60px;
+      height: 25px;
+      background-color: #a0d468;
+      border-radius: 15px;
+    }
+
+    .bamboo::before {
+      top: -10px;
+      left: -25px;
+      transform: rotate(-20deg);
+    }
+
+    .bamboo::after {
+      top: -5px;
+      right: -25px;
+      transform: rotate(20deg);
+    }
+
+    .title {
+      position: absolute;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="panda-container">
+    <h1 class="title">Cute Panda</h1>
+    <div class="panda-face">
+      <div class="ear left-ear"></div>
+      <div class="ear right-ear"></div>
+      <div class="eye-patch left-eye-patch"></div>
+      <div class="eye-patch right-eye-patch"></div>
+      <div class="eye left-eye"></div>
+      <div class="eye right-eye"></div>
+      <div class="nose"></div>
+      <div class="cheek left-cheek"></div>
+      <div class="cheek right-cheek"></div>
+      <div class="mouth"></div>
+      <div class="bamboo"></div>
+    </div>
+  </div>
+
+</body>
+</html>
